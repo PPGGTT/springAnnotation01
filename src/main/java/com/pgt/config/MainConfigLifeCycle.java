@@ -2,6 +2,7 @@ package com.pgt.config;
 
 import com.pgt.bean.Car;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
@@ -50,6 +51,7 @@ import org.springframework.context.annotation.Scope;
  * Spring底层对 BeanPostProcessor 的使用；
  * 		bean赋值，注入其他组件，@Autowired，生命周期注解功能，@Async,xxx BeanPostProcessor;
  */
+@ComponentScan("com.pgt.bean")
 @Configuration
 public class MainConfigLifeCycle {
     @Scope("prototype")

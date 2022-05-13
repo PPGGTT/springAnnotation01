@@ -2,7 +2,7 @@ package com.pgt.bean;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Car {
     public Car(){
         System.out.println("car constructor...");
