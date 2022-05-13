@@ -1,15 +1,18 @@
 package com.pgt.config;
 
+import com.pgt.bean.ColorFactoryBean;
 import com.pgt.bean.ImportBean;
 import com.pgt.bean.Person;
 import com.pgt.condition.LinuxCondition;
+import com.pgt.condition.MyImportBeanDefinitionRegistrar;
 import com.pgt.condition.MyImportSelector;
 import com.pgt.condition.WindowsCondition;
 import org.springframework.context.annotation.*;
 
 @Conditional({WindowsCondition.class})
 @Configuration
-@Import({ImportBean.class, MyImportSelector.class})//快速导入一个空组件 MyImportSelector是自定义的类导入选择器
+@Import({ImportBean.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
+//快速导入一个空组件 MyImportSelector是自定义的类导入选择器
 public class MainConfig2 {
     //默认是单实例的
     /**
@@ -58,4 +61,9 @@ public class MainConfig2 {
      * 		2）、要获取工厂Bean本身，我们需要给id前面加一个&
      * 			&colorFactoryBean
      */
+    @Bean //测试自定义的FactoryBean
+    public ColorFactoryBean colorFactoryBean(){
+        return new ColorFactoryBean();
+    }
+
 }

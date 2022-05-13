@@ -45,4 +45,13 @@ public class IOCTest {
         Map<String, Person> beansOfType = applicationContext.getBeansOfType(Person.class);
         System.out.println(beansOfType);
     }
+    @Test
+    public void testImport(){
+        printBeans(applicationContext);
+        Object colorFactoryBean = applicationContext.getBean("colorFactoryBean");
+        System.out.println("查看bean的类型"+colorFactoryBean.getClass());//结果为泛型中定义的Color类型了
+        //获取原来的ColorFactoryBean类型
+        Object colorFactoryBean2 = applicationContext.getBean("&colorFactoryBean");
+        System.out.println(colorFactoryBean2);
+    }
 }
